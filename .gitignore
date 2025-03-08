@@ -1,0 +1,11 @@
+# exclude the browser sync configuration file
+bs-config.js
+
+# exclude any files inside the test directory
+test/*
+
+# exclude any text files 
+*.txt 
+
+# include the README file in case it is considered a text file
+!README.md
