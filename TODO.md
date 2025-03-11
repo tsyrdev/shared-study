@@ -1,0 +1,5 @@
+- [x] Make the pop up
+- [ ] Have every section of app have a pop up removal option
+- [ ] Try to move the make the sections movable 
+- [ ] If no timer is selected prompt the user to pick one
+- [ ] Show which timer is selected 

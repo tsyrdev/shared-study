@@ -10,6 +10,7 @@ const pomodoroCountdown = document.querySelector(".countdown");
 const pomodoroNext = document.querySelector(".nextTimer");
 const pomodoroCanvas = document.querySelector(".countdownDisplay");
 const pomodoroOptions = document.querySelector(".optionWrapper");
+const pomodoroOffBttn = document.querySelector(".pomodoroSilenceNotifyOverlay");
 
 let pomCtx = createCtx(pomodoroCanvas);
 let pomOriginalColors; 
@@ -38,20 +39,18 @@ pomodoroNext.addEventListener("mouseenter", e => {
     if (!pom.hasStarted())
         return; 
 
-    e.currentTarget.innerHTML = `
-        <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" stroke="var(--pomodoro-block)">
-        <path d="M8 3.5L8 16.5M8 3.5L3.5 7.83333M8 3.5L12.5 7.83333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M17 20.5L17 7.5M17 20.5L21.5 16.1667M17 20.5L12.5 16.1667" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    `;
+    e.currentTarget.querySelector(".nextSvg").classList.remove("nextSvgHidden");
+    e.currentTarget.querySelector(".nextCountdown").classList.add("nextCountdownHidden");
 });
 
 pomodoroNext.addEventListener("mouseleave", e => {
     if (!pom.hasStarted())
         return; 
 
-    e.currentTarget.textContent = pom.restTime;
-})
+    e.currentTarget.querySelector(".nextSvg").classList.add("nextSvgHidden");
+    e.currentTarget.querySelector(".nextCountdown").classList.remove("nextCountdownHidden");
+});
+
 
 function isOnPomBttn(x, y) {
     const imageData = pomCtx.getImageData(x, y, 1, 1);

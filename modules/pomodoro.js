@@ -64,7 +64,16 @@ class Pomodoro {
         const alarm = new Audio("./pomodoroProfiles/audioProfiles/iphone_alarm.mp3");
         alarm.play(); 
 
-        // TODO show a pop-up to stop it.
+        document.querySelector(".innerPomodoroColors").classList.add("notify");
+        const notifyPopup = document.querySelector(".pomodoroNotify")
+        notifyPopup.classList.remove("hidden");
+
+        notifyPopup.querySelector("button").addEventListener("click", () => {
+            document.querySelector(".innerPomodoroColors").classList.remove("notify");
+            document.querySelector(".pomodoroNotify").classList.add("hidden");
+            alarm.pause();
+            alarm.currentTime = 0; 
+        });
     }
 
     flipIntervals() {
@@ -124,7 +133,8 @@ class Pomodoro {
     }
 
     #setNextTimerElement(rest) {
-        this.nextCountdownElement.textContent = rest;
+        this.nextCountdownElement.querySelector(".nextSvg").classList.add("nextSvgHidden");
+        this.nextCountdownElement.querySelector(".nextCountdown").textContent = rest;
     }
 }
 

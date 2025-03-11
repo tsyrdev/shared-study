@@ -62,7 +62,7 @@ function stopAdding() {
 
 
 let isAdding; 
-function addTimerOptionBttnClickHandler(bttn) {
+function addTimerOptionBttnClickHandler(e) {
     if (isRemoving)
         return;
 
@@ -97,8 +97,8 @@ function addTimerOptionBttnClickHandler(bttn) {
         newDiv.appendChild(restInput);
         newDiv.classList.add("settingTimerOption");
 
-        bttn.classList.add("addingTimerOption");
-        bttn.parentElement.insertBefore(newDiv, bttn);
+        e.currentTarget.classList.add("addingTimerOption");
+        e.currentTarget.parentElement.insertBefore(newDiv, e.currentTarget);
     }
 }
 
@@ -109,18 +109,18 @@ function removeTimerOption(e) {
 }
 
 let isRemoving = false; 
-function removeTimerOptionBttnClickHandler(bttn) {
+function removeTimerOptionBttnClickHandler(e) {
     const options = document.querySelectorAll(".timerOption");
 
     if (!isRemoving) {
-        bttn.classList.add("removingTimerOption");
+        e.currentTarget.classList.add("removingTimerOption");
         isRemoving = true;  
         for (let i = 0; i < options.length; ++i) {
             options[i].classList.add("shakeTimerOption");
             options[i].addEventListener("click", removeTimerOption);
         }
     } else {
-        bttn.classList.remove("removingTimerOption");
+        e.currentTarget.classList.remove("removingTimerOption");
         isRemoving = false; 
         for (let i = 0; i < options.length; ++i) {
             options[i].classList.remove("shakeTimerOption");
@@ -145,28 +145,12 @@ function setPomodoroTimer(pom, parentElem) {
         frag.appendChild(newDiv);
     } 
     ind = timerData.intervals.length; 
-    const addOption = document.createElement("button"); 
-    addOption.classList.add("timerOptionBttn");
-    addOption.innerHTML = `
-        <svg class="timerOptionBttnSVG" fill="none" stroke="var(--pomodoro-block)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="15" y1="10" x2="15" y2="20"></line> <!-- Vertical Line -->
-            <line x1="10" y1="15" x2="20" y2="15"></line> <!-- Horizontal Line -->
-        </svg>
-    `;
-    addOption.addEventListener("click", () => addTimerOptionBttnClickHandler(addOption));
-    frag.appendChild(addOption); 
-    const removeOption = document.createElement("button"); 
-    removeOption.classList.add("timerOptionBttn");
-    removeOption.innerHTML = `
-        <svg class="timerOptionBttnSVG" fill="none" stroke="var(--pomodoro-block)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="10" y1="10" x2="19" y2="19"></line> <!-- Vertical Line -->
-            <line x1="10" y1="19" x2="19" y2="10"></line> <!-- Horizontal Line -->
-        </svg>
-    `;
-    removeOption.addEventListener("click", () => removeTimerOptionBttnClickHandler(removeOption)); 
-    frag.appendChild(removeOption); 
 
-    parentElem.appendChild(frag);
+    const addBttn = document.querySelector("#addTimerOptionBttn");
+    document.querySelector("#addTimerOptionBttn").addEventListener("click", addTimerOptionBttnClickHandler);
+    document.querySelector("#removeTimerOptionBttn").addEventListener("click", removeTimerOptionBttnClickHandler); 
+
+    parentElem.insertBefore(frag, addBttn);
 }
 
 export { setPomodoroStyle, setPomodoroTimer, colorSettings };
