@@ -1,0 +1,36 @@
+{
+    "blockColor": {
+        "rgb": [247, 54, 57],
+        "hex": "#f73643"
+    },
+    "accentColor": {
+        "rgb": [163, 51, 58],
+        "hex": "#a3333a"
+    },
+    "fontColor": {
+        "rgb": [163, 51, 58],
+        "hex": "#a3333a"
+    },
+    "wheelColor": {
+        "rgb": [163, 51, 58],
+        "hex": "#a3333a"
+    },
+    "wheelHighlightColor": {
+        "rgb": [255, 255, 255],
+        "hex": "#ffffff"
+    },
+    "imageColor": {
+        "rgb": [163, 51, 58],
+        "hex": "#a3333a"
+    },
+    "imageHighlightColor": {
+        "rgb": [255, 255, 255],
+        "hex": "#ffffff"
+    },
+    "timerColor": {
+        "rgb": [247, 54, 57],
+        "hex": "#f73643"
+    },
+    "highlightColor": {
+    }
+}

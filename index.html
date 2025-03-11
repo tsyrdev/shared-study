@@ -2,9 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Shared Study!</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script type="module" src="main.js" defer></script>
 </head>
 <body>
-    
+    <section class="block pomodoroBlock">
+        <div class="outterBlock pomodoroColors">
+            <div class="innerBlock innerPomodoroColors">
+                <div class="timerWrapper">
+                    <div class="timerProfileWrapper">
+                        <span id="timerProfileName">Maths</span>
+                        <button id="timerProfileBttn">></button>
+                    </div>
+                    <div class="countdownWrapper">
+                        <canvas class="countdownDisplay"></canvas>
+                        <span class="countdown"></span>
+                        <button class="nextTimer">
+                            <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" stroke="var(--pomodoro-block)">
+                                <path d="M8 3.5L8 16.5M8 3.5L3.5 7.83333M8 3.5L12.5 7.83333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M17 20.5L17 7.5M17 20.5L21.5 16.1667M17 20.5L12.5 16.1667" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="optionWrapper"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
